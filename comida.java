@@ -6,7 +6,9 @@ package com.mycompany.jogo;
 
 /**
  *
- * @author livia
+ * NOME: LÍVIA E THAMILY SILVA NOGUEIRA
+ * TURMA: CC3M
+ * MATRÍCULA: E 202422800
  */
 public class comida {
     private int nutricao;
@@ -35,3 +37,4 @@ public class comida {
     
    
 }
+
