@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package com.mycompany.jogo;
 
 /**
@@ -24,7 +23,7 @@ public void jogar(pou Pou) {
     int opcao;
 
     do {
-        System.out.println("\nMINIGAME DO DIA");
+        System.out.println("\nMINIGAME");
         System.out.println("1 - Acerte o Número");
         System.out.println("2 - Jogo do Milhão");
         System.out.println("0 - Sair");
@@ -34,12 +33,14 @@ public void jogar(pou Pou) {
 
         switch(opcao) {
             case 1:
-                if (Pou.getStatus().getEnergia() < 10) {
+                if (Pou.getStatus().getEnergia() < 40) {
                     System.out.println("O/a " + Pou.getNome() + " tá cansado demais! Bora dormir?");
                 } else {
                     adivinharNumero(Pou);
+                    Pou.getStatus().setFome(Pou.getStatus().getFome() - 15);     
+                    Pou.getStatus().setHigiene(Pou.getStatus().getHigiene() - 5); 
                     Pou.getStatus().setEnergia(Pou.getStatus().getEnergia() - 10);
-                    System.out.println(Pou.getNome() + " gastou 10 de energia.");
+                    System.out.println(Pou.getNome() + " gastou 10 de energia\n-20 fome atual\n-10 higiene");
                 }
                 break;
 
@@ -49,7 +50,9 @@ public void jogar(pou Pou) {
                 } else {
                     jogoDoMilhao(Pou);
                     Pou.getStatus().setEnergia(Pou.getStatus().getEnergia() - 20);
-                    System.out.println(Pou.getNome() + " gastou 20 de energia.");
+                    Pou.getStatus().setFome(Pou.getStatus().getFome() - 10);
+                    Pou.getStatus().setHigiene(Pou.getStatus().getHigiene() - 10);
+                    System.out.println(Pou.getNome() + " gastou 20 de energia\n-10 fome atual\n-10 higiene");
                 }
                 break;
 
@@ -78,8 +81,8 @@ public void jogar(pou Pou) {
             chute = scanner.nextInt();
 
             if (chute == numero) {
-                System.out.println("Parabéns! Você acertou e ganhou +10 moedas");
-                Pou.getStatus().setMoedas(Pou.getStatus().getMoedas() + 10);
+                System.out.println("Parabéns! Você acertou e ganhou +20 moedas");
+                Pou.getStatus().setMoedas(Pou.getStatus().getMoedas() + 20);
                 break;
             } else if (chute < numero) {
                 System.out.println("Errou! Dica: o número é maior que " + chute);
@@ -106,4 +109,3 @@ public void jogar(pou Pou) {
         System.out.println("Agora você tem " + Pou.getStatus().getMoedas() + " moedas!");
     }
 }
-
