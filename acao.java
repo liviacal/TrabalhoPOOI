@@ -6,7 +6,9 @@ package com.mycompany.jogo;
 
 /**
  *
- * @author livia
+ * NOME: LÍVIA E THAMILY SILVA NOGUEIRA
+ * TURMA: CC3M
+ * MATRÍCULA: E 202422800
  */
 public class acao {
     public static void alimentar(pou pou , comida comida,status moeda,status fome,int opt){
@@ -42,3 +44,4 @@ public class acao {
     
     }
 }
+
