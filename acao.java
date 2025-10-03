@@ -54,7 +54,7 @@ public class acao {
             
             
             System.out.println("-R$" + (int)precoDaComida);
-            System.out.println("Moedas: " + pou.getStatus().getMoedas() + " YUMMM... que delícia!");
+            System.out.println("Moedas: " + pou.getStatus().getMoedas() + "\nYUMMM... que delícia!");
             System.out.println("Alimentado: " + pou.getStatus().getFome());
 
         } else {
@@ -126,4 +126,5 @@ public class acao {
         }
         System.out.println("Higiene Atual: "+higiene.getHigiene());
     }
+
 }
