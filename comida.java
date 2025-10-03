@@ -4,11 +4,9 @@
  */
 package com.mycompany.jogo;
 
-/**
- *
- * NOME: LÍVIA E THAMILY SILVA NOGUEIRA
+/* NOME: LiVIA SILVEIRA CALDEIRA E THAMILY SILVA NOGUEIRA
  * TURMA: CC3M
- * MATRÍCULA: E 202422800
+ * MATRÍCULA: 202526272 E 202422800
  */
 public class comida {
     private int nutricao;
@@ -37,4 +35,3 @@ public class comida {
     
    
 }
-

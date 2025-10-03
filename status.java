@@ -6,24 +6,27 @@ package com.mycompany.jogo;
 
 /**
  *
- * NOME: LÍVIA E THAMILY SILVA NOGUEIRA
+ * NOME: LiVIA SILVEIRA CALDEIRA E THAMILY SILVA NOGUEIRA
  * TURMA: CC3M
- * MATRÍCULA: E 202422800
+ * MATRÍCULA: 202526272 E 202422800
  */
 public class status {
     private int fome;
     private int energia;
     private int higiene;
     private int moedas;
+    
     public status(int fome, int energia, int higiene,int moedas) {
         this.fome = fome;
         this.energia = energia;
         this.higiene = higiene;
         this.moedas=moedas;
     }
+    
     public void setMoedas(int moedas) {
         this.moedas = moedas;
     }
+    
     public int getMoedas() {
         return moedas;
     }
@@ -51,6 +54,5 @@ public class status {
     public void setHigiene(int higiene) {
         this.higiene = higiene;
     }
-    
 }
 

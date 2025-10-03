@@ -4,13 +4,10 @@
  */
 package com.mycompany.jogo;
 
-/**
- *
- * NOME: LÍVIA E THAMILY SILVA NOGUEIRA
+/* NOME: LiVIA SILVEIRA CALDEIRA E THAMILY SILVA NOGUEIRA
  * TURMA: CC3M
- * MATRÍCULA: E 202422800
+ * MATRÍCULA: 202526272 E 202422800
  */
-
 import java.util.Scanner;
 import java.util.Random;
 
@@ -18,54 +15,101 @@ public class minigames {
 
     Scanner scanner = new Scanner(System.in); 
     Random random = new Random();
+    int acoesEnvelhecer = 7; 
 
-public void jogar(pou Pou) {
-    int opcao;
-
-    do {
-        System.out.println("\nMINIGAME");
-        System.out.println("1 - Acerte o Número");
-        System.out.println("2 - Jogo do Milhão");
-        System.out.println("0 - Sair");
-        System.out.print("Digite a opção: ");
-
-        opcao = scanner.nextInt();
-
-        switch(opcao) {
-            case 1:
-                if (Pou.getStatus().getEnergia() < 40) {
-                    System.out.println("O/a " + Pou.getNome() + " tá cansado demais! Bora dormir?");
-                } else {
-                    adivinharNumero(Pou);
-                    Pou.getStatus().setFome(Pou.getStatus().getFome() - 15);     
-                    Pou.getStatus().setHigiene(Pou.getStatus().getHigiene() - 5); 
-                    Pou.getStatus().setEnergia(Pou.getStatus().getEnergia() - 10);
-                    System.out.println(Pou.getNome() + " gastou 10 de energia\n-20 fome atual\n-10 higiene");
-                }
-                break;
-
-            case 2:
-                if (Pou.getStatus().getEnergia() < 20) {
-                    System.out.println("O/a " + Pou.getNome() + " tá cansado demais! Bora dormir?");
-                } else {
-                    jogoDoMilhao(Pou);
-                    Pou.getStatus().setEnergia(Pou.getStatus().getEnergia() - 20);
-                    Pou.getStatus().setFome(Pou.getStatus().getFome() - 10);
-                    Pou.getStatus().setHigiene(Pou.getStatus().getHigiene() - 10);
-                    System.out.println(Pou.getNome() + " gastou 20 de energia\n-10 fome atual\n-10 higiene");
-                }
-                break;
-
-            case 0:
-                System.out.println("Ok... Saindo do minigame :(");
-                break;
-
-            default:
-                System.out.println("Opção inválida!");
+    public void verificarEnvelhecimento(pou Pou) {
+        Pou.incrementarContadorDeAcoes(); 
+       
+        if (Pou.getContadorDeAcoes() >= acoesEnvelhecer) {
+            int novaIdade = Pou.getIdade() + 1;
+            Pou.setIdade(novaIdade);
+            Pou.setContadorDeAcoes(0); 
+            System.out.println("PARABÉNS! " + Pou.getNome() + " tem " + Pou.getIdade() + " anos!");
         }
+    }
+    
+    public void jogar(pou Pou) {
+        int opcao;
 
-    } while (opcao != 0);
-}
+        do {
+            System.out.println("\nMINIGAME");
+            System.out.println("1 - Acerte o Número");
+            System.out.println("2 - Jogo do Milhão");
+            System.out.println("0 - Sair");
+            System.out.print("Digite a opção: ");
+
+            opcao = scanner.nextInt();
+
+            switch(opcao) {
+                case 1:
+                    adivinharNumero(Pou);
+                    
+                    int novaFome = Pou.getStatus().getFome() - 5;
+                    int novaHigiene = Pou.getStatus().getHigiene() - 5;
+                    int novaEnergia = Pou.getStatus().getEnergia() - 5;
+    
+                    if (novaFome < 0) { 
+                        Pou.getStatus().setFome(0);
+                    } else {
+                        Pou.getStatus().setFome(novaFome);
+                    }
+                    if (novaHigiene < 0) {
+                        Pou.getStatus().setHigiene(0); 
+                    } 
+                    else { 
+                        Pou.getStatus().setHigiene(novaHigiene);
+                    }
+                    if (novaEnergia < 0) {
+                        Pou.getStatus().setEnergia(0); 
+                    }
+                    else {
+                        Pou.getStatus().setEnergia(novaEnergia);
+                    }
+    
+                    System.out.println(Pou.getNome() + " gastou 5 de energia, 5 de fome, e 5 de higiene.");
+                    System.out.println(Pou.getNome() + "\n\nStatus Atual:\nFome: " + Pou.getStatus().getFome() + "\nEnergia: " + Pou.getStatus().getEnergia() + "\nHigiene: " + Pou.getStatus().getHigiene() + "\nMoedas: " + Pou.getStatus().getMoedas());
+                    verificarEnvelhecimento(Pou);
+                    break;
+
+                case 2:
+                    jogoDoMilhao(Pou);
+                    
+                    int novaEnergia2 = Pou.getStatus().getEnergia() - 5;
+                    int novaFome2 = Pou.getStatus().getFome() - 25;
+                    int novaHigiene2 = Pou.getStatus().getHigiene() - 5;
+                    
+                    if (novaEnergia2 < 0) {
+                        Pou.getStatus().setEnergia(0);
+                    } else { 
+                        Pou.getStatus().setEnergia(novaEnergia2); 
+                    }
+                    if (novaFome2 < 0) {
+                        Pou.getStatus().setFome(0);
+                    
+                    } else { Pou.getStatus().setFome(novaFome2); }
+                    if (novaHigiene2 < 0) { 
+                        Pou.getStatus().setHigiene(0);
+                    } else { 
+                        Pou.getStatus().setHigiene(novaHigiene2); 
+                    }
+                    
+                    System.out.println(Pou.getNome() + " gastou 5 de energia, 25 de fome, e 5 de higiene.");
+                    System.out.println(Pou.getNome() + "\n\nStatus Atual:\nFome: " + Pou.getStatus().getFome() + "\nEnergia: " + Pou.getStatus().getEnergia() + "\nHigiene: " + Pou.getStatus().getHigiene() + "\nMoedas: " + Pou.getStatus().getMoedas());
+                    verificarEnvelhecimento(Pou);
+                    break;
+
+                case 0:
+                    System.out.println("Ok... Saindo do minigame :(");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida!");
+            }
+             if (Pou.getStatus().getFome() <= 0 || Pou.getStatus().getEnergia() <= 0 || Pou.getStatus().getHigiene() <= 0) {
+                 return; 
+            }
+        } while (opcao != 0);
+    }
 
     public void adivinharNumero(pou Pou) {
         int numero = random.nextInt(10) + 1;
@@ -102,10 +146,18 @@ public void jogar(pou Pou) {
 
     public void jogoDoMilhao(pou Pou) {
         System.out.println("\nVai começaaaar, o Jogo do Milhão!");
+        System.out.println("Girando a roleta da sorte...");
+        try {
+            Thread.sleep(5000); 
+        } catch (InterruptedException e) {
+           
+            System.out.println("Sorteio interrompido!");
+        }
+       
         int premio = random.nextInt(50);
         Pou.getStatus().setMoedas(Pou.getStatus().getMoedas() + premio);
 
-        System.out.println("Você ganhou " + premio + " moedas!");
-        System.out.println("Agora você tem " + Pou.getStatus().getMoedas() + " moedas!");
+        System.out.println("Parabéns! Você ganhou " + premio + " moedas!");
+        System.out.println("Agora você tem " + Pou.getStatus().getMoedas() + " moedas.");
     }
 }

@@ -6,19 +6,20 @@ package com.mycompany.jogo;
 
 /**
  *
- * NOME: LÍVIA E THAMILY SILVA NOGUEIRA
+ * NOME: LiVIA SILVEIRA CALDEIRA E THAMILY SILVA NOGUEIRA
  * TURMA: CC3M
- * MATRÍCULA: E 202422800
+ * MATRÍCULA: 202526272 E 202422800
  */
 public class pou {
     private String nome;
     private status status;
     private int idade;
-
-    public pou(String nome, status status, int idade) {
+    private int contadorDeAcoes;
+    public pou(String nome, status status, int idade,int contadorDeAcoes) {
         this.nome = nome;
         this.status = status;
         this.idade = idade;
+        this.contadorDeAcoes= contadorDeAcoes;
     }
 
     public  String getNome() {
@@ -41,6 +42,16 @@ public class pou {
         this.idade = idade;
     }
     
+     public int getContadorDeAcoes() {
+        return contadorDeAcoes;
+    }
     
-}
+    public void setContadorDeAcoes(int contadorDeAcoes) {
+        this.contadorDeAcoes = contadorDeAcoes;
+    }
 
+    public void incrementarContadorDeAcoes() {
+        this.contadorDeAcoes++;
+    }
+
+}
